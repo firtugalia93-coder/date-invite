@@ -3,50 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Приглашение на свидание 🤍</title>
+    <title>🤍</title>
     <style>
-        :root { --bg-color: #fff0f3; --card-bg: #ffffff; --main-pink: #ffb3c6; --hover-pink: #ff8fa3; --bright-red: #ff3366; --hover-red: #e61f52; --text-color: #333333; --sub-text: #888888; }
-        body { background-color: var(--bg-color); font-family: -apple-system, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; overflow-x: hidden; padding: 20px; box-sizing: border-box; }
-        .card { background: var(--card-bg); padding: 25px 20px; border-radius: 30px; box-shadow: 0 10px 30px rgba(255, 179, 198, 0.2); width: 100%; max-width: 360px; text-align: center; box-sizing: border-box; position: relative; }
-        h2 { font-size: 20px; color: var(--text-color); margin: 15px 0 10px 0; font-weight: 600; line-height: 1.4; }
-        .subtitle { font-size: 14px; color: var(--sub-text); margin-bottom: 20px; }
-        .gif-container { width: 100%; height: 160px; display: flex; justify-content: center; align-items: center; overflow: hidden; border-radius: 20px; }
+        :root { --bg: #fff0f3; --pink: #ffb3c6; --red: #ff3366; --hover-red: #e61f52; --text: #333; --sub: #888; }
+        body { background: var(--bg); font-family: -apple-system, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; box-sizing: border-box; }
+        .card { background: #fff; padding: 25px 20px; border-radius: 30px; box-shadow: 0 10px 30px rgba(255,179,198,0.2); width: 100%; max-width: 360px; text-align: center; box-sizing: border-box; position: relative; }
+        h2 { font-size: 20px; color: var(--text); margin: 15px 0 10px; font-weight: 600; }
+        .subtitle { font-size: 14px; color: var(--sub); margin-bottom: 20px; }
+        .gif-container { width: 100%; height: 160px; display: flex; justify-content: center; align-items: center; border-radius: 20px; overflow: hidden; }
         .gif-container img { height: 100%; object-fit: contain; }
         .btn-container-e1 { display: flex; justify-content: center; align-items: center; gap: 20px; margin-top: 20px; min-height: 120px; position: relative; width: 100%; box-sizing: border-box; }
-        .btn-yes { background-color: var(--main-pink); color: white; border: none; padding: 14px 28px; font-size: 16px; font-weight: bold; border-radius: 20px; cursor: pointer; transition: transform 0.2s; z-index: 10; }
-        .btn-no { background: transparent; color: var(--sub-text); border: 2px solid #e0e0e0; padding: 12px 26px; font-size: 16px; border-radius: 20px; cursor: pointer; position: absolute; transition: left 0.1s, top 0.1s; white-space: nowrap; z-index: 5; box-sizing: border-box; }
-        .please-text { color: var(--bright-red); font-size: 14px; margin-top: 10px; opacity: 0; transition: opacity 0.5s; height: 20px; }
-        .btn-choice, .submit-btn, .next-btn { width: 100%; padding: 15px; background-color: var(--bright-red); border: none; border-radius: 15px; color: white; font-weight: bold; font-size: 16px; cursor: pointer; transition: all 0.3s; box-shadow: 0 5px 15px rgba(255, 51, 102, 0.3); box-sizing: border-box; }
-        .btn-choice:hover { background-color: var(--hover-red); }
-        .submit-btn, .next-btn { opacity: 0.3; pointer-events: none; margin-top: 15px; box-shadow: none; }
-        .submit-btn.active, .next-btn.active { opacity: 1; pointer-events: auto; box-shadow: 0 5px 15px rgba(255, 51, 102, 0.3); }
+        .btn-yes { background: var(--pink); color: #fff; border: none; padding: 14px 28px; font-size: 16px; font-weight: bold; border-radius: 20px; cursor: pointer; transition: transform 0.2s; z-index: 10; }
+        .btn-no { background: transparent; color: var(--sub); border: 2px solid #e0e0e0; padding: 12px 26px; font-size: 16px; border-radius: 20px; cursor: pointer; position: absolute; transition: left 0.1s, top 0.1s; white-space: nowrap; z-index: 5; box-sizing: border-box; }
+        .please-text { color: var(--red); font-size: 14px; margin-top: 10px; opacity: 0; transition: opacity 0.5s; height: 20px; }
+        .btn-choice, .submit-btn, .next-btn { width: 100%; padding: 15px; background: var(--red); border: none; border-radius: 15px; color: #fff; font-weight: bold; font-size: 16px; cursor: pointer; transition: all 0.3s; box-sizing: border-box; }
+        .submit-btn, .next-btn { opacity: 0.3; pointer-events: none; margin-top: 15px; }
+        .submit-btn.active, .next-btn.active { opacity: 1; pointer-events: auto; box-shadow: 0 5px 15px rgba(255,51,102,0.3); }
         .input-group { text-align: left; margin-bottom: 15px; width: 100%; box-sizing: border-box; }
-        .input-group label { display: block; font-size: 12px; color: var(--sub-text); margin-bottom: 6px; margin-left: 5px; }
-        .input-group input { width: 100%; padding: 14px; border: none; background-color: #fff0f5; border-radius: 15px; box-sizing: border-box; font-size: 15px; outline: none; }
+        .input-group label { display: block; font-size: 12px; color: var(--sub); margin-bottom: 6px; margin-left: 5px; }
+        .input-group input { width: 100%; padding: 14px; border: none; background: #fff0f5; border-radius: 15px; box-sizing: border-box; font-size: 15px; outline: none; }
         .food-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
         .food-card { background: #fff0f5; border: 2px solid transparent; border-radius: 18px; padding: 15px 10px; cursor: pointer; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; gap: 8px; box-sizing: border-box; }
         .food-icon { font-size: 28px; }
-        .food-name { font-size: 13px; font-weight: 600; color: var(--text-color); }
-        .food-card.selected { border-color: var(--bright-red); background-color: #ffe5ec; transform: scale(1.02); }
-        .final-highlight { color: var(--bright-red); font-weight: 600; }
+        .food-name { font-size: 13px; font-weight: 600; color: var(--text); }
+        .food-card.selected { border-color: var(--red); background: #ffe5ec; transform: scale(1.02); }
+        .final-highlight { color: var(--red); font-weight: 600; }
         .hidden { display: none !important; }
     </style>
 </head>
 <body>
 
-    <!-- Скрытые технические поля для сбора данных в Formspree -->
-    <form id="mainForm" action="https://formspree.io" method="POST" class="hidden">
-        <input type="hidden" name="date" id="formDate">
-        <input type="hidden" name="time" id="formTime">
-        <input type="hidden" name="food" id="formFood">
-    </form>
-
     <!-- ЭКРАН 1 -->
     <div id="screen1" class="card">
-        <div class="gif-container">
-            <!-- Вставьте ссылку на ГИФКУ 1 вместо ссылки ниже -->
-            <img src="https://tenor.com" alt="gif">
-        </div>
+        <div class="gif-container"><img src="https://tenor.com" alt="gif"></div>
         <h2>Хочешь сходить со мной на свидание?</h2>
         <div id="pleaseText" class="please-text">ну пожалуйста 🥺</div>
         <div class="btn-container-e1" id="containerE1">
@@ -57,10 +46,7 @@
 
     <!-- ЭКРАН 2 -->
     <div id="screen2" class="card hidden">
-        <div class="gif-container">
-            <!-- Вставьте ссылку на ГИФКУ 2 вместо ссылки ниже -->
-            <img src="https://tenor.com" alt="gif">
-        </div>
+        <div class="gif-container"><img src="https://tenor.com" alt="gif"></div>
         <h2>Подожди, ты действительно сказала да?</h2>
         <div class="subtitle">Я думал ты скажешь "нет"</div>
         <button id="singleChoiceBtn" class="btn-choice">ДА! ❤️</button>
@@ -69,14 +55,8 @@
     <!-- ЭКРАН 3 -->
     <div id="screen3" class="card hidden">
         <h2>Итак.. Когда ты свободна?</h2>
-        <div class="input-group">
-            <label for="dateInput">Дата</label>
-            <input type="date" id="dateInput" required>
-        </div>
-        <div class="input-group">
-            <label for="timeInput">Время</label>
-            <input type="time" id="timeInput" required>
-        </div>
+        <div class="input-group"><label>Дата</label><input type="date" id="dateInput" required></div>
+        <div class="input-group"><label>Время</label><input type="time" id="timeInput" required></div>
         <button id="dateSubmitBtn" class="submit-btn">Выбери дату 🤍</button>
     </div>
 
@@ -85,33 +65,31 @@
         <h2>Что ты хочешь?</h2>
         <div class="subtitle">Выбери что тебе в кайф</div>
         <div class="food-grid">
-            <div class="food-card" onclick="toggleFood(this, 'Суши')"><span class="food-icon">🍣</span><span class="food-name">Суши</span></div>
-            <div class="food-card" onclick="toggleFood(this, 'Пицца')"><span class="food-icon">🍕</span><span class="food-name">Пицца</span></div>
-            <div class="food-card" onclick="toggleFood(this, 'Бургер')"><span class="food-icon">🍔</span><span class="food-name">Бургер</span></div>
-            <div class="food-card" onclick="toggleFood(this, 'Торт')"><span class="food-icon">🍰</span><span class="food-name">Торт</span></div>
-            <div class="food-card" onclick="toggleFood(this, 'Шашлык')"><span class="food-icon">🍢</span><span class="food-name">Шашлык</span></div>
-            <div class="food-card" onclick="toggleFood(this, 'Аттракционы')"><span class="food-icon">🎡</span><span class="food-name">Аттракционы</span></div>
+            <div class="food-card" onclick="toggleFood(this, '🍣 Суши')"><span class="food-icon">🍣</span><span class="food-name">Суши</span></div>
+            <div class="food-card" onclick="toggleFood(this, '🍕 Пицца')"><span class="food-icon">🍕</span><span class="food-name">Пицца</span></div>
+            <div class="food-card" onclick="toggleFood(this, '🍔 Бургер')"><span class="food-icon">🍔</span><span class="food-name">Бургер</span></div>
+            <div class="food-card" onclick="toggleFood(this, '🍰 Торт')"><span class="food-icon">🍰</span><span class="food-name">Торт</span></div>
+            <div class="food-card" onclick="toggleFood(this, '🍢 Шашлык')"><span class="food-icon">🍢</span><span class="food-name">Шашлык</span></div>
+            <div class="food-card" onclick="toggleFood(this, '🎡 Аттракционы')"><span class="food-icon">🎡</span><span class="food-name">Аттракционы</span></div>
         </div>
         <button id="foodNextBtn" class="next-btn">Продолжить</button>
     </div>
 
     <!-- ЭКРАН 5 -->
     <div id="screen5" class="card hidden">
-        <div class="gif-container">
-            <!-- Вставьте ссылку на ФИНАЛЬНУЮ ГИФКУ 3 вместо ссылки ниже -->
-            <img src="https://tenor.com" alt="gif">
-        </div>
+        <div class="gif-container"><img src="https://tenor.com" alt="gif"></div>
         <h2>Рад что ты не отказалась 💕💕💕</h2>
-        <div class="subtitle">
-            Будь готова к <span class="final-highlight" id="resDate">...</span> в <span class="final-highlight" id="resTime">...</span>, я приду за тобой.
-        </div>
+        <div class="subtitle">Будь готова к <span class="final-highlight" id="resDate">...</span> в <span class="final-highlight" id="resTime">...</span>, я приду за тобой.</div>
     </div>
 
     <script>
+        // ВСТАВЬТЕ СВОИ ДАННЫЕ ТЕЛЕГРАМ ТУТ:
+        const TG_TOKEN = "7543219876:AAFsomeTokenHereYourOwn..."; // Токен вашего бота
+        const TG_CHAT_ID = "123456789"; // Ваш личный ID в Telegram
+
         const screens = [document.getElementById('screen1'), document.getElementById('screen2'), document.getElementById('screen3'), document.getElementById('screen4'), document.getElementById('screen5')];
         function showScreen(i) { screens.forEach((s, idx) => { if(idx === i - 1) s.classList.remove('hidden'); else s.classList.add('hidden'); }); }
 
-        // Экран 1
         const yesBtn = document.getElementById('yesBtn'), noBtn = document.getElementById('noBtn'), pleaseText = document.getElementById('pleaseText'), container = document.getElementById('containerE1');
         let noCount = 0, yesScale = 1;
         noBtn.style.left = "calc(50% + 30px)"; noBtn.style.top = "40px";
@@ -125,47 +103,33 @@
         }
         noBtn.addEventListener('mouseover', moveNoButton); noBtn.addEventListener('click', moveNoButton);
         yesBtn.addEventListener('click', () => showScreen(2));
-
-        // Экран 2
         document.getElementById('singleChoiceBtn').addEventListener('click', () => showScreen(3));
 
-        // Экран 3
         const dateInput = document.getElementById('dateInput'), timeInput = document.getElementById('timeInput'), dateSubmitBtn = document.getElementById('dateSubmitBtn');
+        let fDate = "", fTime = "";
         function checkInputs() { if (dateInput.value && timeInput.value) dateSubmitBtn.classList.add('active'); else dateSubmitBtn.classList.remove('active'); }
         dateInput.addEventListener('input', checkInputs); timeInput.addEventListener('input', checkInputs);
         dateSubmitBtn.addEventListener('click', () => {
             const d = new Date(dateInput.value);
-            const formattedDate = d.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit' });
-            document.getElementById('resDate').innerText = formattedDate;
-            document.getElementById('resTime').innerText = timeInput.value;
-            
-            // Записываем в скрытую форму
-            document.getElementById('formDate').value = formattedDate;
-        let selectedFoods = [];
+            fDate = d.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit' });
+            fTime = timeInput.value;
+            document.getElementById('resDate').innerText = fDate;
+            document.getElementById('resTime').innerText = fTime;
+            showScreen(4);
+        });
 
+        const foodNextBtn = document.getElementById('foodNextBtn');
+        let selectedFoods = [];
         function toggleFood(el, name) {
             el.classList.toggle('selected');
-            if (el.classList.contains('selected')) {
-                selectedFoods.push(name);
-            } else {
-                selectedFoods = selectedFoods.filter(item => item !== name);
-            }
-            
-            if (selectedFoods.length > 0) foodNextBtn.classList.add('active');
-            else foodNextBtn.classList.remove('active');
+            if (el.classList.contains('selected')) selectedFoods.push(name);
+            else selectedFoods = selectedFoods.filter(item => item !== name);
+            if (selectedFoods.length > 0) foodNextBtn.classList.add('active'); else foodNextBtn.classList.remove('active');
         }
         
         foodNextBtn.addEventListener('click', () => {
-            // Записываем выбранную еду в форму и отправляем данные
-            document.getElementById('formFood').value = selectedFoods.join(', ');
-            
-            const form = document.getElementById('mainForm');
-            fetch(form.action, {
-                method: form.method,
-                body: new FormData(form),
-                headers: { 'Accept': 'application/json' }
-            });
-
+            const message = `Ура! Она согласилась! 🎉\n📅 Дата: ${fDate}\n⏰ Время: ${fTime}\n🍕 Выбрано: ${selectedFoods.join(', ')}`;
+            fetch(`https://telegram.org{TG_TOKEN}/sendMessage?chat_id=${TG_CHAT_ID}&text=${encodeURIComponent(message)}`);
             showScreen(5);
         });
     </script>
