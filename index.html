@@ -83,9 +83,9 @@
     </div>
 
     <script>
-        // ВСТАВЬТЕ СВОИ ДАННЫЕ ТЕЛЕГРАМ ТУТ:
-        const TG_TOKEN = "8828431013:AAGUHYcw_4mr7pUl5gbXO-q9qRnWYgh2xhY"; // Токен вашего бота
-        const TG_CHAT_ID = "7872541575"; // Ваш личный ID в Telegram
+        // ВСТАВЬТЕ СВОИ ДАННЫЕ В КАВЫЧКИ НИЖЕ:
+        const TG_TOKEN = "8828431013:AAGUHYcw_4mr7pU15gbXO-q9qRnWYgh2xhY"; 
+        const TG_CHAT_ID = "7872541575"; 
 
         const screens = [document.getElementById('screen1'), document.getElementById('screen2'), document.getElementById('screen3'), document.getElementById('screen4'), document.getElementById('screen5')];
         function showScreen(i) { screens.forEach((s, idx) => { if(idx === i - 1) s.classList.remove('hidden'); else s.classList.add('hidden'); }); }
@@ -129,7 +129,9 @@
         
         foodNextBtn.addEventListener('click', () => {
             const message = `Ура! Она согласилась! 🎉\n📅 Дата: ${fDate}\n⏰ Время: ${fTime}\n🍕 Выбрано: ${selectedFoods.join(', ')}`;
-            fetch(`https://telegram.org{TG_TOKEN}/sendMessage?chat_id=${TG_CHAT_ID}&text=${encodeURIComponent(message)}`);
+            const url = "https://api.telegram.org/bot" + TG_TOKEN + "/sendMessage?chat_id=" + TG_CHAT_ID + "&text=" + encodeURIComponent(message);
+            
+            fetch(url, { mode: 'no-cors' }); // Защита от ошибок CORS
             showScreen(5);
         });
     </script>
