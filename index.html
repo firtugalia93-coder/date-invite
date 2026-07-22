@@ -34,7 +34,17 @@
         .food-name { font-size: 13px; font-weight: 600; color: var(--text); }
         .food-card.selected { border-color: var(--red); background: #ffe5ec; transform: scale(1.02); }
         .final-highlight { color: var(--red); font-weight: 600; }
-        .hidden { display: none !important; }
+        .hidden { display: none !important;   
+
+input, select, textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+.card {
+    overflow: hidden !important;
+}
+
     </style>
 </head>
 <body>
