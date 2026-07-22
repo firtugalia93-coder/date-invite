@@ -10,7 +10,8 @@
             --card-bg: #ffffff;
             --main-pink: #ffb3c6;
             --hover-pink: #ff8fa3;
-            --dark-pink: #ff4d6d;
+            --bright-red: #ff3366; /* Ярко-красный цвет */
+            --hover-red: #e61f52;
             --text-color: #333333;
             --sub-text: #888888;
         }
@@ -104,7 +105,7 @@
         }
 
         .please-text {
-            color: var(--dark-pink);
+            color: var(--bright-red);
             font-size: 14px;
             margin-top: 15px;
             font-weight: 500;
@@ -113,7 +114,7 @@
             height: 20px;
         }
 
-        /* ЭКРАН 2: Три кнопки ДА */
+        /* ЭКРАН 2: Одна большая красная кнопка */
         .btn-grid-e2 {
             display: flex;
             flex-direction: column;
@@ -122,19 +123,21 @@
         }
 
         .btn-choice {
-            background-color: var(--main-pink);
+            background-color: var(--bright-red);
             color: white;
             border: none;
-            padding: 14px;
-            font-size: 16px;
+            padding: 16px;
+            font-size: 18px;
             font-weight: bold;
             border-radius: 15px;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: background 0.2s, transform 0.1s;
+            width: 100%;
+            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.3);
         }
 
         .btn-choice:hover {
-            background-color: var(--hover-pink);
+            background-color: var(--hover-red);
         }
 
         /* ЭКРАН 3: Форма даты */
@@ -163,10 +166,11 @@
             outline: none;
         }
 
+        /* Кнопка даты (изначально полупрозрачная) */
         .submit-btn {
             width: 100%;
             padding: 15px;
-            background-color: var(--main-pink);
+            background-color: var(--bright-red);
             border: none;
             border-radius: 15px;
             color: white;
@@ -174,7 +178,7 @@
             font-size: 15px;
             cursor: pointer;
             margin-top: 15px;
-            opacity: 0.4;
+            opacity: 0.3;
             pointer-events: none;
             transition: all 0.3s ease;
         }
@@ -182,7 +186,7 @@
         .submit-btn.active {
             opacity: 1;
             pointer-events: auto;
-            box-shadow: 0 5px 15px rgba(255, 179, 198, 0.4);
+            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.3);
         }
 
         /* ЭКРАН 4: Сетка еды */
@@ -217,26 +221,36 @@
         }
 
         .food-card.selected {
-            border-color: var(--hover-pink);
+            border-color: var(--bright-red);
             background-color: #ffe5ec;
             transform: scale(1.02);
         }
 
+        /* Кнопка еды (изначально полупрозрачная) */
         .next-btn {
             width: 100%;
             padding: 15px;
-            background-color: var(--main-pink);
+            background-color: var(--bright-red);
             border: none;
             border-radius: 15px;
             color: white;
             font-weight: bold;
             font-size: 15px;
             cursor: pointer;
+            opacity: 0.3;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .next-btn.active {
+            opacity: 1;
+            pointer-events: auto;
+            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.3);
         }
 
         /* Финальный текст */
         .final-highlight {
-            color: var(--dark-pink);
+            color: var(--bright-red);
             font-weight: 600;
         }
 
@@ -263,9 +277,7 @@
         <h2>Подожди, ты действительно сказала да?</h2>
         <div class="subtitle">Я думал ты скажешь "нет"</div>
         <div class="btn-grid-e2">
-            <button class="btn-choice choice-btn">Да</button>
-            <button class="btn-choice choice-btn">Да</button>
-            <button class="btn-choice choice-btn">ДА</button>
+            <button id="singleChoiceBtn" class="btn-choice">ДА! ❤️</button>
         </div>
     </div>
 
@@ -322,9 +334,6 @@
         <div class="subtitle">
             Будь готова к <span class="final-highlight" id="resDate">...</span> в <span class="final-highlight" id="resTime">...</span>, я приду за тобой.
         </div>
-    </div>
-
-    <script>
         // Переменные экранов
         const screens = [
             document.getElementById('screen1'),
