@@ -58,6 +58,11 @@ input, select, textarea {
     margin: 10px auto !important;
     box-sizing: border-box !important;
 }
+input[type="date"], input[type="time"] {
+    -webkit-appearance: none !important; /* Отключает системный дизайн Apple */
+    appearance: none !important;
+    min-width: 0 !important;             /* Сбрасывает стандартную минимальную ширину iOS */
+}
 
     </style>
 </head>
