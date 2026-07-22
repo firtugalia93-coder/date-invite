@@ -73,7 +73,7 @@ input[type="date"], input[type="time"] {
     <h2>Хочешь сходить со мной на свидание?</h2>
     <div id="pleaseText" class="please-text">ну пожалуйста 🥺</div>
     <div class="btn-container-e1" id="containerE1">
-        <button id="yesBtn" class="btn-yes">Да! ❤️</button>
+        <button id="yesBtn" class="btn-yes">Да! 🤍</button>
         <button id="noBtn" class="btn-no">Нет</button>
     </div>
 </div>
@@ -87,12 +87,23 @@ input[type="date"], input[type="time"] {
 
 
     <!-- ЭКРАН 3 -->
-    <div id="screen3" class="card hidden">
-        <h2>Итак.. Когда ты свободна?</h2>
-        <div class="input-group"><label>Дата</label><input type="date" id="dateInput" required></div>
-        <div class="input-group"><label>Время</label><input type="time" id="timeInput" required></div>
-        <button id="dateSubmitBtn" class="submit-btn">Выбери дату 🤍</button>
+   <!-- ЭКРАН 3 -->
+<div id="screen3" class="card hidden">
+    <h2>Итак.. Когда ты свободна?</h2>
+    
+    <div class="input-group">
+        <label style="display: block; margin-bottom: 5px; text-align: left;">Дата</label>
+        <input type="date" id="dateInput" required style="width: 100% !important; box-sizing: border-box !important;">
     </div>
+    
+    <div class="input-group">
+        <label style="display: block; margin-bottom: 5px; text-align: left;">Время</label>
+        <input type="time" id="timeInput" required style="width: 100% !important; box-sizing: border-box !important;">
+    </div>
+    
+    <button id="dateSubmitBtn" class="submit-btn">Выбери дату 🤍</button>
+</div>
+
 
     <!-- ЭКРАН 4 -->
     <div id="screen4" class="card hidden">
