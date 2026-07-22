@@ -127,11 +127,13 @@
             if (selectedFoods.length > 0) foodNextBtn.classList.add('active'); else foodNextBtn.classList.remove('active');
         }
         
-        foodNextBtn.addEventListener('click', () => {
+               foodNextBtn.addEventListener('click', () => {
             const message = `Ура! Она согласилась! 🎉\n📅 Дата: ${fDate}\n⏰ Время: ${fTime}\n🍕 Выбрано: ${selectedFoods.join(', ')}`;
-            const url = "https://api.telegram.org/bot" + TG_TOKEN + "/sendMessage?chat_id=" + TG_CHAT_ID + "&text=" + encodeURIComponent(message);
             
-            fetch(url, { mode: 'no-cors' }); // Защита от ошибок CORS
+            // Самый надежный обход CORS-блокировок в браузере через скрытый запрос картинки
+            const img = new Image();
+            img.src = "https://api.telegram.org/bot" + TG_TOKEN + "/sendMessage?chat_id=" + TG_CHAT_ID + "&text=" + encodeURIComponent(message);
+            
             showScreen(5);
         });
     </script>
