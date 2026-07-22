@@ -3,74 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Приглашение на свидание</title>
+    <title>Приглашение на свидание 🤍</title>
     <style>
+        :root {
+            --bg-color: #fff0f3;
+            --card-bg: #ffffff;
+            --main-pink: #ffb3c6;
+            --hover-pink: #ff8fa3;
+            --dark-pink: #ff4d6d;
+            --text-color: #333333;
+            --sub-text: #888888;
+        }
+
         body {
-            background-color: #fff0f3;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
-        }
-
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 30px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            width: 340px;
-            text-align: center;
+            overflow-x: hidden;
+            padding: 20px;
             box-sizing: border-box;
         }
 
-        .bunny-img {
+        .card {
+            background: var(--card-bg);
+            padding: 30px 25px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(255, 179, 198, 0.2);
             width: 100%;
-            border-radius: 20px;
-            display: block;
+            max-width: 360px;
+            text-align: center;
+            box-sizing: border-box;
+            position: relative;
+            transition: all 0.3s ease;
         }
 
-        .title {
-            font-size: 18px;
-            color: #333;
-            margin: 20px 0;
+        h2 {
+            font-size: 20px;
+            color: var(--text-color);
+            margin: 0 0 10px 0;
             font-weight: 600;
+            line-height: 1.4;
         }
 
-        /* Стили для кнопок первой страницы */
-        .btn-container {
+        .subtitle {
+            font-size: 14px;
+            color: var(--sub-text);
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        /* ЭКРАН 1: Кнопки */
+        .btn-container-e1 {
             display: flex;
-            gap: 15px;
             justify-content: center;
-            margin-top: 20px;
-        }
-
-        .btn {
-            padding: 12px 25px;
-            border: none;
-            border-radius: 15px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.2s;
+            align-items: center;
+            gap: 20px;
+            margin-top: 30px;
+            min-height: 120px;
+            position: relative;
         }
 
         .btn-yes {
-            background-color: #ffb3c6;
+            background-color: var(--main-pink);
             color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            box-shadow: 0 5px 15px rgba(255, 179, 198, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            z-index: 10;
         }
 
         .btn-yes:hover {
-            background-color: #ff8fa3;
+            background-color: var(--hover-pink);
         }
 
         .btn-no {
-            background-color: #e0e0e0;
-            color: #666;
+            background: transparent;
+            color: var(--sub-text);
+            border: 2px solid #e0e0e0;
+            padding: 12px 26px;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 20px;
+            cursor: pointer;
+            position: absolute;
+            transition: left 0.15s ease, top 0.15s ease;
+            white-space: nowrap;
+            z-index: 5;
         }
 
-        /* Форма выбора даты (Вторая страница) */
+        .please-text {
+            color: var(--dark-pink);
+            font-size: 14px;
+            margin-top: 15px;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            height: 20px;
+        }
+
+        /* ЭКРАН 2: Три кнопки ДА */
+        .btn-grid-e2 {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .btn-choice {
+            background-color: var(--main-pink);
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-choice:hover {
+            background-color: var(--hover-pink);
+        }
+
+        /* ЭКРАН 3: Форма даты */
         .input-group {
             text-align: left;
             margin-bottom: 15px;
@@ -78,42 +145,102 @@
 
         .input-group label {
             display: block;
-            font-size: 11px;
-            color: #888;
-            margin-bottom: 5px;
+            font-size: 12px;
+            color: var(--sub-text);
+            margin-bottom: 6px;
             margin-left: 5px;
         }
 
         .input-group input {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             border: none;
             background-color: #fff0f5;
             border-radius: 15px;
             box-sizing: border-box;
-            font-size: 14px;
-            color: #555;
+            font-size: 15px;
+            color: var(--text-color);
             outline: none;
         }
 
         .submit-btn {
             width: 100%;
-            padding: 14px;
-            background-color: #ffb3c6;
+            padding: 15px;
+            background-color: var(--main-pink);
             border: none;
             border-radius: 15px;
             color: white;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 15px;
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: 15px;
+            opacity: 0.4;
+            pointer-events: none;
+            transition: all 0.3s ease;
         }
 
-        .submit-btn:hover {
-            background-color: #ff8fa3;
+        .submit-btn.active {
+            opacity: 1;
+            pointer-events: auto;
+            box-shadow: 0 5px 15px rgba(255, 179, 198, 0.4);
         }
 
-        /* Класс для скрытия элементов */
+        /* ЭКРАН 4: Сетка еды */
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .food-card {
+            background: #fff0f5;
+            border: 2px solid transparent;
+            border-radius: 18px;
+            padding: 15px 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .food-icon {
+            font-size: 28px;
+        }
+
+        .food-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .food-card.selected {
+            border-color: var(--hover-pink);
+            background-color: #ffe5ec;
+            transform: scale(1.02);
+        }
+
+        .next-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--main-pink);
+            border: none;
+            border-radius: 15px;
+            color: white;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        /* Финальный текст */
+        .final-highlight {
+            color: var(--dark-pink);
+            font-weight: 600;
+        }
+
+        /* Скрытие элементов */
         .hidden {
             display: none !important;
         }
@@ -121,65 +248,177 @@
 </head>
 <body>
 
-    <!-- ПЕРВАЯ СТРАНИЦА: ВОПРОС -->
-    <div id="page1" class="card">
-        <div class="image-container">
-            <!-- Замените link_to_your_image1.gif на вашу гифку/картинку вопроса -->
-            <img src="https://tenor.com" alt="Зайчик" class="bunny-img">
-        </div>
-        <h2 class="title">Пойдешь со мной на свидание? 🧸</h2>
-        <div class="btn-container">
-            <button id="yesBtn" class="btn btn-yes">Да!</button>
-            <button id="noBtn" class="btn btn-no">Нет</button>
+    <!-- ЭКРАН 1 -->
+    <div id="screen1" class="card">
+        <h2>Хочешь сходить со мной на свидание?</h2>
+        <div id="pleaseText" class="please-text">ну пожалуйста 🥺</div>
+        <div class="btn-container-e1" id="containerE1">
+            <button id="yesBtn" class="btn-yes">Да! ❤️</button>
+            <button id="noBtn" class="btn-no">Нет</button>
         </div>
     </div>
 
-    <!-- ВТОРАЯ СТРАНИЦА: ВЫБОР ДАТЫ (Изначально скрыта) -->
-    <div id="page2" class="card hidden">
-        <div class="image-container">
-            <!-- Замените link_to_your_image2.png на картинку с двумя зайчиками -->
-            <img src="https://tenor.com" alt="Зайчики" class="bunny-img">
+    <!-- ЭКРАН 2 -->
+    <div id="screen2" class="card hidden">
+        <h2>Подожди, ты действительно сказала да?</h2>
+        <div class="subtitle">Я думал ты скажешь "нет"</div>
+        <div class="btn-grid-e2">
+            <button class="btn-choice choice-btn">Да</button>
+            <button class="btn-choice choice-btn">Да</button>
+            <button class="btn-choice choice-btn">ДА</button>
         </div>
-        <h2 class="title">Итак... Когда ты свободна?</h2>
-        <form class="date-form" onsubmit="sendData(event)">
-            <div class="input-group">
-                <label for="date-input">Дата</label>
-                <input type="date" id="date-input" required>
+    </div>
+
+    <!-- ЭКРАН 3 -->
+    <div id="screen3" class="card hidden">
+        <h2>Итак.. Когда ты свободна?</h2>
+        <div class="input-group">
+            <label for="dateInput">Дата</label>
+            <input type="date" id="dateInput" required>
+        </div>
+        <div class="input-group">
+            <label for="timeInput">Время</label>
+            <input type="time" id="timeInput" required>
+        </div>
+        <button id="dateSubmitBtn" class="submit-btn">Выбери дату 🤍</button>
+    </div>
+
+    <!-- ЭКРАН 4 -->
+    <div id="screen4" class="card hidden">
+        <h2>Что ты хочешь?</h2>
+        <div class="subtitle">Выбери что тебе в кайф</div>
+        <div class="food-grid">
+            <div class="food-card" onclick="toggleFood(this)">
+                <span class="food-icon">🍣</span>
+                <span class="food-name">Суши</span>
             </div>
-            <div class="input-group">
-                <label for="time-input">Время</label>
-                <input type="time" id="time-input" required>
+            <div class="food-card" onclick="toggleFood(this)">
+                <span class="food-icon">🍕</span>
+                <span class="food-name">Пицца</span>
             </div>
-            <button type="submit" class="submit-btn">Выбери дату 🤍</button>
-        </form>
+            <div class="food-card" onclick="toggleFood(this)">
+                <span class="food-icon">🍔</span>
+                <span class="food-name">Бургер</span>
+            </div>
+            <div class="food-card" onclick="toggleFood(this)">
+                <span class="food-icon">🍰</span>
+                <span class="food-name">Торт</span>
+            </div>
+            <div class="food-card" onclick="toggleFood(this)">
+                <span class="food-icon">🍢</span>
+                <span class="food-name">Шашлык</span>
+            </div>
+            <div class="food-card" onclick="toggleFood(this)">
+                <span class="food-icon">🎡</span>
+                <span class="food-name">Аттракционы</span>
+            </div>
+        </div>
+        <button id="foodNextBtn" class="next-btn">Продолжить</button>
+    </div>
+
+    <!-- ЭКРАН 5 -->
+    <div id="screen5" class="card hidden">
+        <h2>Рад что ты не отказалась 💕💕💕</h2>
+        <div class="subtitle">
+            Будь готова к <span class="final-highlight" id="resDate">...</span> в <span class="final-highlight" id="resTime">...</span>, я приду за тобой.
+        </div>
     </div>
 
     <script>
-        const page1 = document.getElementById('page1');
-        const page2 = document.getElementById('page2');
+        // Переменные экранов
+        const screens = [
+            document.getElementById('screen1'),
+            document.getElementById('screen2'),
+            document.getElementById('screen3'),
+            document.getElementById('screen4'),
+            document.getElementById('screen5')
+        ];
+
+        function showScreen(index) {
+            screens.forEach((scr, idx) => {
+                if(idx === index - 1) scr.classList.remove('hidden');
+                else scr.classList.add('hidden');
+            });
+        }
+
+        // --- ЛОГИКА ЭКРАНА 1 ---
         const yesBtn = document.getElementById('yesBtn');
         const noBtn = document.getElementById('noBtn');
+        const pleaseText = document.getElementById('pleaseText');
+        const container = document.getElementById('containerE1');
+        
+        let noCount = 0;
+        let yesScale = 1;
 
-        // Переключение на вторую страницу при нажатии "Да"
-        yesBtn.addEventListener('click', () => {
-            page1.classList.add('hidden');
-            page2.classList.remove('hidden');
-        });
+        // Начальное положение кнопки "Нет"
+        noBtn.style.left = "calc(50% + 30px)";
+        noBtn.style.top = "40px";
 
-        // Убегающая или уменьшающаяся кнопка "Нет" (по желанию можно доработать)
-        noBtn.addEventListener('click', () => {
-            alert('Ой, эта кнопка сломалась, нажми "Да" 😊');
-        });
+        function moveNoButton() {
+            noCount++;
+            yesScale += 0.25; // Увеличение кнопки "Да"
+            yesBtn.style.transform = `scale(${yesScale})`;
 
-        // Функция обработки отправки формы
-        function sendData(event) {
-            event.preventDefault();
-            const date = document.getElementById('date-input').value;
-            const time = document.getElementById('time-input').value;
+            if (noCount >= 5) {
+                pleaseText.style.opacity = "1";
+            }
+
+            // Рассчитываем случайные координаты внутри карточки
+            const cardWidth = container.clientWidth;
+            const cardHeight = container.clientHeight;
             
-            alert(`Ура! Дата выбрана: ${date} в ${time}`);
-            // Здесь можно настроить отправку данных вам
+            const randomX = Math.floor(Math.random() * (cardWidth - noBtn.offsetWidth));
+            const randomY = Math.floor(Math.random() * (cardHeight - noBtn.offsetHeight));
+
+            noBtn.style.left = randomX + "px";
+            noBtn.style.top = randomY + "px";
         }
+
+        noBtn.addEventListener('mouseover', moveNoButton);
+        noBtn.addEventListener('click', moveNoButton); // для телефонов
+
+        yesBtn.addEventListener('click', () => showScreen(2));
+
+        // --- ЛОГИКА ЭКРАНА 2 ---
+        document.querySelectorAll('.choice-btn').forEach(btn => {
+            btn.addEventListener('click', () => showScreen(3));
+        });
+
+        // --- ЛОГИКА ЭКРАНА 3 ---
+        const dateInput = document.getElementById('dateInput');
+        const timeInput = document.getElementById('timeInput');
+        const dateSubmitBtn = document.getElementById('dateSubmitBtn');
+
+        function checkInputs() {
+            if (dateInput.value && timeInput.value) {
+                dateSubmitBtn.classList.add('active');
+            } else {
+                dateSubmitBtn.classList.remove('active');
+            }
+        }
+
+        dateInput.addEventListener('input', checkInputs);
+        timeInput.addEventListener('input', checkInputs);
+
+        dateSubmitBtn.addEventListener('click', () => {
+            // Красивое форматирование даты (ДД.ММ)
+            const dateVal = new Date(dateInput.value);
+            const formattedDate = dateVal.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit' });
+            
+            document.getElementById('resDate').innerText = formattedDate;
+            document.getElementById('resTime').innerText = timeInput.value;
+            
+            showScreen(4);
+        });
+
+        // --- ЛОГИКА ЭКРАНА 4 ---
+        function toggleFood(element) {
+            element.classList.toggle('selected');
+        }
+
+        document.getElementById('foodNextBtn').addEventListener('click', () => {
+            showScreen(5);
+        });
     </script>
 </body>
 </html>
