@@ -334,6 +334,9 @@
         <div class="subtitle">
             Будь готова к <span class="final-highlight" id="resDate">...</span> в <span class="final-highlight" id="resTime">...</span>, я приду за тобой.
         </div>
+ </div>
+
+    <script>
         // Переменные экранов
         const screens = [
             document.getElementById('screen1'),
@@ -359,20 +362,18 @@
         let noCount = 0;
         let yesScale = 1;
 
-        // Начальное положение кнопки "Нет"
         noBtn.style.left = "calc(50% + 30px)";
         noBtn.style.top = "40px";
 
         function moveNoButton() {
             noCount++;
-            yesScale += 0.25; // Увеличение кнопки "Да"
+            yesScale += 0.25;
             yesBtn.style.transform = `scale(${yesScale})`;
 
             if (noCount >= 5) {
                 pleaseText.style.opacity = "1";
             }
 
-            // Рассчитываем случайные координаты внутри карточки
             const cardWidth = container.clientWidth;
             const cardHeight = container.clientHeight;
             
@@ -384,13 +385,13 @@
         }
 
         noBtn.addEventListener('mouseover', moveNoButton);
-        noBtn.addEventListener('click', moveNoButton); // для телефонов
+        noBtn.addEventListener('click', moveNoButton);
 
         yesBtn.addEventListener('click', () => showScreen(2));
 
         // --- ЛОГИКА ЭКРАНА 2 ---
-        document.querySelectorAll('.choice-btn').forEach(btn => {
-            btn.addEventListener('click', () => showScreen(3));
+        document.getElementById('singleChoiceBtn').addEventListener('click', () => {
+            showScreen(3);
         });
 
         // --- ЛОГИКА ЭКРАНА 3 ---
@@ -410,7 +411,6 @@
         timeInput.addEventListener('input', checkInputs);
 
         dateSubmitBtn.addEventListener('click', () => {
-            // Красивое форматирование даты (ДД.ММ)
             const dateVal = new Date(dateInput.value);
             const formattedDate = dateVal.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit' });
             
@@ -421,13 +421,24 @@
         });
 
         // --- ЛОГИКА ЭКРАНА 4 ---
+        const foodNextBtn = document.getElementById('foodNextBtn');
+
         function toggleFood(element) {
             element.classList.toggle('selected');
+            
+            const selectedCards = document.querySelectorAll('.food-card.selected');
+            if (selectedCards.length > 0) {
+                foodNextBtn.classList.add('active');
+            } else {
+                foodNextBtn.classList.remove('active');
+            }
         }
 
-        document.getElementById('foodNextBtn').addEventListener('click', () => {
+        foodNextBtn.addEventListener('click', () => {
             showScreen(5);
         });
     </script>
 </body>
 </html>
+
+       
