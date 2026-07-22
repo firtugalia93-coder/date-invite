@@ -3,167 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>У меня есть к тебе вопрос... ✨</title>
+    <title>Приглашение на свидание</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
         body {
+            background-color: #fff0f3;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #ffe6e6, #ffb3b3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
             height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-content: center;
-            align-items: center;
+            margin: 0;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            width: 340px;
             text-align: center;
-            overflow: hidden;
+            box-sizing: border-box;
         }
 
-        .container {
-            background: rgba(255, 255, 255, 0.85);
-            padding: 40px;
-            border-radius: 24px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            max-width: 450px;
-            width: 90%;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+        .bunny-img {
+            width: 100%;
+            border-radius: 20px;
+            display: block;
         }
 
-        h1 {
-            color: #d63031;
-            font-size: 28px;
-            margin-bottom: 20px;
-            line-height: 1.4;
-        }
-
-        .gif-container {
-            font-size: 64px;
-            margin-bottom: 25px;
-            animation: heartbeat 1.2s infinite;
-        }
-
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            20% { transform: scale(1.1); }
-            40% { transform: scale(1); }
-            60% { transform: scale(1.15); }
-            80%, 100% { transform: scale(1); }
-        }
-
-        .buttons {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            height: 80px;
-            position: relative;
-        }
-
-        button {
-            padding: 14px 30px;
+        .title {
             font-size: 18px;
-            font-weight: bold;
+            color: #333;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+
+        /* Стили для кнопок первой страницы */
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 25px;
             border: none;
-            border-radius: 50px;
+            border-radius: 15px;
+            font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
-            transition: transform 0.2s ease, background-color 0.2s ease;
+            transition: transform 0.2s;
+        }
+
+        .btn-yes {
+            background-color: #ffb3c6;
+            color: white;
+        }
+
+        .btn-yes:hover {
+            background-color: #ff8fa3;
+        }
+
+        .btn-no {
+            background-color: #e0e0e0;
+            color: #666;
+        }
+
+        /* Форма выбора даты (Вторая страница) */
+        .input-group {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 11px;
+            color: #888;
+            margin-bottom: 5px;
+            margin-left: 5px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background-color: #fff0f5;
+            border-radius: 15px;
+            box-sizing: border-box;
+            font-size: 14px;
+            color: #555;
             outline: none;
         }
 
-        #btn-yes {
-            background-color: #2ecc71;
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #ffb3c6;
+            border: none;
+            border-radius: 15px;
             color: white;
-            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 10px;
         }
 
-        #btn-yes:hover {
-            background-color: #27ae60;
-            transform: scale(1.05);
+        .submit-btn:hover {
+            background-color: #ff8fa3;
         }
 
-        #btn-no {
-            background-color: #e74c3c;
-            color: white;
-            position: absolute;
-            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
-            left: 55%;
-            z-index: 10;
-        }
-
-        /* Экран успешного ответа */
+        /* Класс для скрытия элементов */
         .hidden {
             display: none !important;
-        }
-
-        .success-title {
-            color: #27ae60;
         }
     </style>
 </head>
 <body>
 
-    <!-- Главный экран -->
-    <div class="container" id="main-card">
-        <div class="gif-container">❤️</div>
-        <h1>Пойдешь со мной на свидание?</h1>
-        <div class="buttons">
-            <button id="btn-yes">Да!</button>
-            <button id="btn-no">Нет</button>
+    <!-- ПЕРВАЯ СТРАНИЦА: ВОПРОС -->
+    <div id="page1" class="card">
+        <div class="image-container">
+            <!-- Замените link_to_your_image1.gif на вашу гифку/картинку вопроса -->
+            <img src="https://tenor.com" alt="Зайчик" class="bunny-img">
+        </div>
+        <h2 class="title">Пойдешь со мной на свидание? 🧸</h2>
+        <div class="btn-container">
+            <button id="yesBtn" class="btn btn-yes">Да!</button>
+            <button id="noBtn" class="btn btn-no">Нет</button>
         </div>
     </div>
 
-    <!-- Экран после нажатия "Да" -->
-    <div class="container hidden" id="success-card">
-        <div class="gif-container">🎉🥳 Indefinite</div>
-        <h1 class="success-title">Ура! Я знал, что ты согласишься!</h1>
-        <p style="color: #555; font-size: 18px; margin-top: 10px;">Пишу тебе в мессенджер, чтобы обсудить время и место! 😉</p>
+    <!-- ВТОРАЯ СТРАНИЦА: ВЫБОР ДАТЫ (Изначально скрыта) -->
+    <div id="page2" class="card hidden">
+        <div class="image-container">
+            <!-- Замените link_to_your_image2.png на картинку с двумя зайчиками -->
+            <img src="https://tenor.com" alt="Зайчики" class="bunny-img">
+        </div>
+        <h2 class="title">Итак... Когда ты свободна?</h2>
+        <form class="date-form" onsubmit="sendData(event)">
+            <div class="input-group">
+                <label for="date-input">Дата</label>
+                <input type="date" id="date-input" required>
+            </div>
+            <div class="input-group">
+                <label for="time-input">Время</label>
+                <input type="time" id="time-input" required>
+            </div>
+            <button type="submit" class="submit-btn">Выбери дату 🤍</button>
+        </form>
     </div>
 
     <script>
-        const btnYes = document.getElementById('btn-yes');
-        const btnNo = document.getElementById('btn-no');
-        const mainCard = document.getElementById('main-card');
-        const successCard = document.getElementById('success-card');
+        const page1 = document.getElementById('page1');
+        const page2 = document.getElementById('page2');
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
 
-        let yesScale = 1;
+        // Переключение на вторую страницу при нажатии "Да"
+        yesBtn.addEventListener('click', () => {
+            page1.classList.add('hidden');
+            page2.classList.remove('hidden');
+        });
 
-        // Функция перемещения кнопки "Нет"
-        function moveButton() {
-            // Получаем размеры контейнера кнопок, чтобы кнопка не улетала за экран
-            const container = document.querySelector('.buttons');
-            const containerWidth = container.clientWidth;
-            const containerHeight = container.clientHeight;
+        // Убегающая или уменьшающаяся кнопка "Нет" (по желанию можно доработать)
+        noBtn.addEventListener('click', () => {
+            alert('Ой, эта кнопка сломалась, нажми "Да" 😊');
+        });
 
-            // Вычисляем случайные координаты внутри этой области
-            const randomX = Math.floor(Math.random() * (containerWidth - btnNo.clientWidth));
-            const randomY = Math.floor(Math.random() * (containerHeight - btnNo.clientHeight)) - 20;
-
-            // Меняем позиционирование кнопки
-            btnNo.style.left = randomX + 'px';
-            btnNo.style.top = randomY + 'px';
-
-            // При каждой попытке нажать "Нет" увеличиваем кнопку "Да"
-            yesScale += 0.15;
-            btnYes.style.transform = `scale(${yesScale})`;
+        // Функция обработки отправки формы
+        function sendData(event) {
+            event.preventDefault();
+            const date = document.getElementById('date-input').value;
+            const time = document.getElementById('time-input').value;
+            
+            alert(`Ура! Дата выбрана: ${date} в ${time}`);
+            // Здесь можно настроить отправку данных вам
         }
-
-        // Обработчики для ПК (наведение мыши) и телефонов (касание)
-        btnNo.addEventListener('mouseenter', moveButton);
-        btnNo.addEventListener('touchstart', (e) => {
-            e.preventDefault(); // Отменяет стандартный клик на телефонах
-            moveButton();
-        });
-
-        // Логика кнопки "Да"
-        btnYes.addEventListener('click', () => {
-            mainCard.classList.add('hidden');
-            successCard.classList.remove('hidden');
-        });
     </script>
 </body>
 </html>
